@@ -1,0 +1,36 @@
+@import "../../../styles.scss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+
+section {
+  margin-top: 10vh;
+  display: flex;
+  flex-flow: column;
+  min-height: 100%;
+  height: 100%;
+  .question-container {
+    flex: 1;
+    h1 {
+      text-align: center;
+    }
+    .question-text {
+      font-family: 'Inter', sans-serif;
+    }
+    .question-number {
+      font-size: 2.9em;
+      color: rgba($thg_brown,0.8);
+    }
+    .answer {
+      margin: 15px;
+      background: $yellow_gradient;
+      font-size: 1.5em;
+      padding: 10px;
+      padding-top: 20px;
+      border-radius: 23px;
+      p {
+        text-align: center;
+      }
+    }
+  }
+}

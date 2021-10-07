@@ -1,0 +1,40 @@
+@import "../../../styles.scss";
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+.card {
+  max-width: 300px;
+  min-width: 200px;
+  min-height: 300px;
+  border: 0px solid #c2c2c2;
+  background: rgb(255,166,1);
+  background: $yellow_gradient;
+  border-radius: 3% !important;
+  padding: 15px;
+}
+
+figure {
+  width:148px;
+  height:148px;
+  border-radius:100%;
+  display:inline-block;
+  margin-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.participant-photo {
+  width:148px;
+  height:148px;
+  border-radius:100%;
+}
+
+.card-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5em;
+  font-family: 'Pacifico', cursive;
+}
+
+.card-subtitle
+{
+  text-align: center;
+}

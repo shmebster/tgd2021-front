@@ -1,0 +1,15 @@
+<div class="home-container">
+ <div class="title" >
+   <h1 [@fadeInAnimation]="currentWelcomeText">{{ welcomeDict[currentWelcomeText].hello}}</h1>
+ </div>
+<div class="rules">
+  <h2>🦃🎲🦃</h2>
+  <h2>Правила игры</h2>
+</div>
+  <div class="rule-item">
+    <h3 [@fadeInAnimation]="currentRule">
+      {{ rules[currentRule].title }}
+    </h3>
+    <h4 [@fadeInAnimation]="currentRule"> {{ rules[currentRule].id}}. {{ rules[currentRule].text }}</h4>
+  </div>
+</div>

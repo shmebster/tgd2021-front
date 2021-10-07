@@ -1,0 +1,34 @@
+@import "../../../styles.scss";
+
+.home-container {
+  height: 100%;
+  margin-top: 6%;
+  width: 100%;
+  .title {
+    h1 {
+      font-size: 7.0em;
+      color: rgba($thg_black,0.65);
+      text-align: center;
+    }
+  }
+  .rules {
+    h2 {
+      text-align: center;
+      font-size: 5.0em;
+      color: rgba($thg_black, 0.85);
+    }
+  }
+  .rule-item {
+    h3 {
+      margin-top: 8%;
+      text-align: center;
+      font-size: 3.0em;
+      color: $thg_black;
+    }
+    h4 {
+      text-align: center;
+      font-size: 2.4em;
+      color: $thg_black;
+    }
+  }
+}

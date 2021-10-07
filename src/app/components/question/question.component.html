@@ -1,0 +1,20 @@
+<div class="container">
+  <section>
+    <div class="question-container">
+      <h1 class="question-number mt-4">
+        Вопрос номер
+      </h1>
+      <h1 class="question-text mt-4">
+        {{ question.text }}
+      </h1>
+      <div class="row row-cols-md-2">
+        <div *ngFor="let q of question.answers">
+          <div class="col answer shadow">
+            <p>{{ q }}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>

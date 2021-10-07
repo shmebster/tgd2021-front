@@ -1,0 +1,13 @@
+$thg_red: #9d221e;
+$thg_orange: #ed732e;
+$thg_yellow: #f8b12c;
+$thg_black: #382615;
+$thg_brown: #996236;
+$thg_green: #858D3C;
+
+$yellow_gradient: linear-gradient(0deg, rgba(255,166,1,1) 0%, rgba(248,177,44,1) 49%, rgba(255,211,129,1) 100%);
+
+body {
+  background-color: rgba($thg_brown, 0.4) !important;
+
+}
