@@ -13,6 +13,7 @@ import { API_URL } from "../../../app.constants";
 })
 export class ParticipantItemComponent implements OnInit, OnDestroy {
   @Input() participant: Participant;
+  @Input() small = false;
   private destroyed$ = new Subject<void>();
   imgTimestamp = (new Date()).getTime();
   constructor(private eventService: EventService) {

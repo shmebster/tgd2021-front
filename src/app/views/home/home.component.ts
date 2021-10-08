@@ -35,15 +35,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   currentWelcomeText = 0;
   private interval: number;
   private welcomeInterval: number;
-  animation: string;
   constructor() { }
 
   ngOnInit(): void {
     this.interval = setInterval(() => {
-      if (this.currentRule < this.rules.length) {
+      if (this.currentRule < this.rules.length - 1) {
         this.currentRule++;
       } else {
-        this.currentRule = 1;
+        this.currentRule = 0;
       }
     }, 10000);
     this.welcomeInterval = setInterval(() => {

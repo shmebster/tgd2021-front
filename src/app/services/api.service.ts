@@ -21,7 +21,19 @@ export class ApiService {
     return this.httpClient.get<Participant[]>(`${API_URL}/guests`);
   }
 
+  public getParticipant(id: number): Observable<Participant> {
+    return this.httpClient.get<Participant>(`${API_URL}/guests/${id}`);
+  }
+
   public getQuestion(): Observable<Question> {
     return this.httpClient.get<Question>(`${API_URL}/quiz`);
   }
+
+  public setAppState(state: string, value: string) {
+        return this.httpClient.post<AppState>(`${API_URL}/state`, {
+          state,
+          value
+        });
+    }
+
 }

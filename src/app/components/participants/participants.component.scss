@@ -4,3 +4,12 @@
   width: 100%;
   background-color: $thg_red;
 }
+
+.participants-container.small {
+  background-color: inherit;
+
+  ::ng-deep h4 {
+    margin-top: 4%;
+    color: rgba($thg_brown, 0.8);
+  }
+}

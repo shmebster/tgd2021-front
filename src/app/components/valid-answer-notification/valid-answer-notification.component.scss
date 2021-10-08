@@ -1,0 +1,10 @@
+@import "../../../styles.scss";
+
+.notification-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  background-color: #BE9B7E;
+  top: 0px;
+}

@@ -1,14 +1,17 @@
-<div class="card shadow rounded m-3">
+<div class="card shadow rounded m-3" [ngClass]="{ 'small': small }">
   <figure class="p-1">
     <img [src]="getImageUrl()" class="participant-photo img-fluid">
   </figure>
   <div class="card-title">
     {{ participant.name }}
   </div>
-  <div class="card-subtitle">
-    <h3>{{ participant.score || 'нУль очКов' }}</h3>
+  <div class="content" *ngIf="!small">
+    <div class="card-subtitle">
+      <h3>{{ participant.score || 'нУль очКов' }}</h3>
+    </div>
+    <div class="card-text">
+      значки карт игрока
+    </div>
   </div>
-  <div class="card-text">
-    значки карт игрока
-  </div>
+
 </div>

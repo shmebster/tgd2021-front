@@ -1,0 +1,21 @@
+@import "../../../styles.scss";
+
+h1 {
+  color: rgba($thg_brown,0.7);
+  font-size: 4em;
+  margin-top: 10px;
+}
+
+.qr-code {
+  max-height: 300px;
+  border-radius: 5%;
+}
+
+
+.how-to {
+  font-size: 3em;
+}
+
+.list-group-item {
+  background-color: $thg_green;
+}

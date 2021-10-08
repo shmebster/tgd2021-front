@@ -1,6 +1,10 @@
-<div class="d-flex flex-row participants-container">
-    <div *ngFor="let p of participants" >
-      <app-participant-item [participant]="p"></app-participant-item>
+<div class="participants-container" [ngClass]="{ 'small': small }">
+    <ng-content></ng-content>
+    <div class="d-flex flex-row">
+        <div *ngFor="let p of participants" >
+            <app-participant-item [small]="small" [participant]="p"></app-participant-item>
+        </div>
     </div>
 </div>
+
 

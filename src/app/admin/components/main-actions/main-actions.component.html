@@ -1,0 +1,8 @@
+<div class="btn-group" *ngIf="state">
+    <div>
+        <button class="btn btn-warning" [ngClass]="{ 'active': isActive('welcome')}" (click)="setState('welcome')">Welcome</button>
+        <button class="btn btn-warning" [ngClass]="{ 'active': isActive('register')}" (click)="setState('register')">Register</button>
+        <button class="btn btn-warning" [ngClass]="{ 'active': isActive('quiz')}" (click)="setState('quiz')">Start quiz</button>
+        <app-spinner *ngIf="loading"></app-spinner>
+    </div>
+</div>

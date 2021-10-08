@@ -12,6 +12,7 @@ import { QuestionComponent } from './components/question/question.component';
 import { FadeinDirective } from './directives/fadein.directive';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RegisterComponent } from './views/register/register.component';
+import { ValidAnswerNotificationComponent } from './components/valid-answer-notification/valid-answer-notification.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { RegisterComponent } from './views/register/register.component';
     QuestionComponent,
     FadeinDirective,
     RegisterComponent,
+    ValidAnswerNotificationComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +33,8 @@ import { RegisterComponent } from './views/register/register.component';
     HttpClientModule,
   ],
   providers: [],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
