@@ -11,10 +11,14 @@ export interface EventStateChanged {
 export interface EventAnswerReceived {
   telegramId: number;
 }
+export interface EventUserAdded {
+  telegramId: number;
+  name: string;
+}
 
 export interface QuestionChangedData extends Question {};
 
 export interface ServerEvent {
-  event: 'photos_updated' | 'state_changed' | 'question_changed' | 'answer_received',
+  event: 'photos_updated' | 'state_changed' | 'question_changed' | 'answer_received' | 'user_added',
   data: EventPhotosUpdatedData | EventStateChanged | QuestionChangedData | EventAnswerReceived;
 }

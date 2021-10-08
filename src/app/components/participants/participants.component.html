@@ -1,10 +1,13 @@
 <div class="participants-container" [ngClass]="{ 'small': small }">
     <ng-content></ng-content>
-    <div class="d-flex flex-row">
+    <div class="d-flex flex-row" *ngIf="!small">
         <div *ngFor="let p of participants" >
             <app-participant-item [small]="small" [participant]="p"></app-participant-item>
         </div>
     </div>
+    <div class="d-flex flex-wrap justify-content-center" *ngIf="small">
+        <div *ngFor="let p of participants">
+            <app-participant-item [small]="small" [participant]="p"></app-participant-item>
+        </div>
+    </div>
 </div>
-
-
