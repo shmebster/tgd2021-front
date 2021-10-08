@@ -31,8 +31,8 @@ export class ParticipantsComponent implements OnInit, OnDestroy {
 
   updateParticipants() {
     this.apiService.getParticipants().subscribe((r) => {
-      console.log(r);
       this.participants = r;
+
     });
   }
 

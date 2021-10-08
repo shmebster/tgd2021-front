@@ -24,8 +24,6 @@ export class ParticipantItemComponent implements OnInit, OnDestroy {
       takeUntil(this.destroyed$),
       filter(e => e.event === 'photos_updated' && (e.data as EventPhotosUpdatedData).id === this.participant.telegramId)
     ).subscribe((e) => {
-      console.log(e);
-      console.log(`photo were updated`);
       this.imgTimestamp = (new Date()).getTime();
     })
   }
