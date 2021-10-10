@@ -10,7 +10,7 @@
       <h3>{{ participant.score || 'нУль очКов' }}</h3>
     </div>
     <div class="card-text">
-      значки карт игрока
+      <img *ngFor="let card of cards" [src]="'/assets/cards/' + card.cardType + '.png'" class="card-icon">
     </div>
   </div>
 </div>

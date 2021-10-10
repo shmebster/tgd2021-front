@@ -16,9 +16,14 @@ export interface EventUserAdded {
   name: string;
 }
 
+export interface EventCardsChanged {
+  telegramId: number;
+  cards: [];
+}
+
 export interface QuestionChangedData extends Question {};
 
 export interface ServerEvent {
-  event: 'photos_updated' | 'state_changed' | 'question_changed' | 'answer_received' | 'user_added',
-  data: EventPhotosUpdatedData | EventStateChanged | QuestionChangedData | EventAnswerReceived;
+  event: 'photos_updated' | 'state_changed' | 'question_changed' | 'answer_received' | 'user_added' | 'cards_changed',
+  data: EventPhotosUpdatedData | EventStateChanged | QuestionChangedData | EventAnswerReceived | EventCardsChanged
 }

@@ -13,6 +13,7 @@ import { FadeinDirective } from './directives/fadein.directive';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RegisterComponent } from './views/register/register.component';
 import { ValidAnswerNotificationComponent } from './components/valid-answer-notification/valid-answer-notification.component';
+import { OnboardingComponent } from './views/onboarding/onboarding.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ValidAnswerNotificationComponent } from './components/valid-answer-noti
     FadeinDirective,
     RegisterComponent,
     ValidAnswerNotificationComponent,
+    OnboardingComponent,
   ],
   imports: [
     BrowserModule,

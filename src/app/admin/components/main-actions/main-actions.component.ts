@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from "../../../services/api.service";
 import { AppState } from "../../../../types/app-state";
 
+class GamePage {
+  title: string;
+  name: string
+}
+
 @Component({
   selector: 'app-main-actions',
   templateUrl: './main-actions.component.html',
@@ -11,6 +16,12 @@ export class MainActionsComponent implements OnInit {
   state: AppState;
   loading: Boolean;
 
+  pages: GamePage[] = [
+    { title: 'Welcome', name: 'welcome' },
+    { title: 'Registration', name: 'register'},
+    { title: 'Onboarding', name: 'onboarding' },
+    { title: 'Start quiz', name: 'quiz' }
+  ];
 
   constructor(private apiService: ApiService) { }
 

@@ -5,6 +5,7 @@ import { API_URL } from "../../app.constants";
 import { AppState } from "../../types/app-state";
 import { Participant } from "../../types/participant";
 import { Question } from "../../types/question";
+import { CardItem } from "../../types/card-item";
 
 @Injectable({
   providedIn: 'root'
@@ -36,4 +37,7 @@ export class ApiService {
         });
     }
 
+    getCards(telegramId: number): Observable<CardItem[]> {
+        return this.httpClient.get<CardItem[]>(`${API_URL}/cards/${telegramId}`);
+    }
 }

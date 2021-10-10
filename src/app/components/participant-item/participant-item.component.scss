@@ -12,8 +12,6 @@
 }
 
 figure {
-  width:148px;
-  height:148px;
   border-radius:100%;
   display:inline-block;
   margin-bottom: 15px;
@@ -22,8 +20,8 @@ figure {
 }
 
 .participant-photo {
-  width:148px;
-  height:148px;
+  width:155px;
+  height:155px;
   border-radius:100%;
 }
 
@@ -42,4 +40,9 @@ figure {
 .small {
   height: auto;
   min-height: auto;
+}
+
+.card-icon {
+  height: 32px;
+  width: 32px;
 }

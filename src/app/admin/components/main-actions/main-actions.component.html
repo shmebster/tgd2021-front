@@ -1,8 +1,9 @@
 <div class="btn-group" *ngIf="state">
     <div>
-        <button class="btn btn-warning" [ngClass]="{ 'active': isActive('welcome')}" (click)="setState('welcome')">Welcome</button>
-        <button class="btn btn-warning" [ngClass]="{ 'active': isActive('register')}" (click)="setState('register')">Register</button>
-        <button class="btn btn-warning" [ngClass]="{ 'active': isActive('quiz')}" (click)="setState('quiz')">Start quiz</button>
+        <button class="btn btn-warning" *ngFor="let page of pages"
+                [ngClass]="{ 'active': isActive(page.name) }" (click)="setState(page.name)"
+        > {{ page.title }}</button>
+
         <app-spinner *ngIf="loading"></app-spinner>
     </div>
 </div>
