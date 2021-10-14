@@ -4,7 +4,7 @@ import { filter, map, takeUntil } from "rxjs/operators";
 import { Subject } from "rxjs";
 import { Question } from "../../../types/question";
 import { EventService } from "../../services/event.service";
-import { QuestionChangedData } from "../../../types/server-event";
+import { QuestionChangedEvent } from "../../../types/server-event";
 
 @Component({
   selector: 'app-question',
@@ -22,11 +22,10 @@ export class QuestionComponent implements OnInit, OnDestroy  {
     ).subscribe(r => {
       this.question = r;
     });
-    this.eventService.eventEmitter.pipe(
-      takeUntil(this.destroyed$),
-      filter(e => e.event === 'question_changed'),
-      map(e => e.data as QuestionChangedData)
-    ).subscribe((q: QuestionChangedData) => {
+    this.eventService.questionChangedEvent.pipe(
+        takeUntil(this.destroyed$),
+        map(e => e.data),
+    ).subscribe((q: QuestionChangedEvent) => {
       console.log(q);
       this.question = q;
     });

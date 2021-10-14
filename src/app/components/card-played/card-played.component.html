@@ -1,0 +1,10 @@
+<div class="notification shadow" *ngIf="isShown" [@inOutAnimation]="isShown">
+    <div class="row">
+        <div class="col-9">
+            {{ card }} была разыграна {{ playerName }}
+        </div>
+        <div class="col-3">
+            <img [src]="getImageUrl()" class="img-fluid avatar" align="right">
+        </div>
+    </div>
+</div>

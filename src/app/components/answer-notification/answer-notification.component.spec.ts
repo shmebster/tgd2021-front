@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ValidAnswerNotificationComponent } from './valid-answer-notification.component';
+import { AnswerNotificationComponent } from './answer-notification.component';
 
 describe('ValidAnswerNotificationComponent', () => {
-  let component: ValidAnswerNotificationComponent;
-  let fixture: ComponentFixture<ValidAnswerNotificationComponent>;
+  let component: AnswerNotificationComponent;
+  let fixture: ComponentFixture<AnswerNotificationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ValidAnswerNotificationComponent ]
+      declarations: [ AnswerNotificationComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ValidAnswerNotificationComponent);
+    fixture = TestBed.createComponent(AnswerNotificationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

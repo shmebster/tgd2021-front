@@ -12,8 +12,9 @@ import { QuestionComponent } from './components/question/question.component';
 import { FadeinDirective } from './directives/fadein.directive';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RegisterComponent } from './views/register/register.component';
-import { ValidAnswerNotificationComponent } from './components/valid-answer-notification/valid-answer-notification.component';
+import { AnswerNotificationComponent } from './components/answer-notification/answer-notification.component';
 import { OnboardingComponent } from './views/onboarding/onboarding.component';
+import { CardPlayedComponent } from './components/card-played/card-played.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +26,9 @@ import { OnboardingComponent } from './views/onboarding/onboarding.component';
     QuestionComponent,
     FadeinDirective,
     RegisterComponent,
-    ValidAnswerNotificationComponent,
+    AnswerNotificationComponent,
     OnboardingComponent,
+    CardPlayedComponent,
   ],
   imports: [
     BrowserModule,

@@ -18,13 +18,10 @@ export class ParticipantsComponent implements OnInit, OnDestroy {
   constructor(private apiService: ApiService, private eventService: EventService) { }
 
   ngOnInit(): void {
-    this.eventService.eventEmitter.pipe(
+    this.eventService.userAddedEvent.pipe(
         takeUntil(this.destroyed$),
-        filter((e) => e.event === 'user_added'),
-        map(e => e.data as EventUserAdded)
-    ).subscribe(d => {
-      this.updateParticipants();
-    });
+        map(e => e.data),
+    ).subscribe(e => this.updateParticipants());
 
     this.updateParticipants();
   }

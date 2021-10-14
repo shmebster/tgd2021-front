@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.connection.on('events', (data: ServerEvent) => {
+    this.connection.on('events', (data: ServerEvent<any>) => {
       this.eventService.emit(data);
     });
     this.apiService.getAppState('main').subscribe((result) => {
@@ -29,9 +29,8 @@ export class AppComponent implements OnInit {
         console.log(`navigated to ${result.value}`);
       })
     });
-    this.eventService.eventEmitter.pipe(
-      filter(e => e.event === 'state_changed'),
-      map(e => e.data as EventStateChanged)
+    this.eventService.stateChangedEvent.pipe(
+        map(e => e.data),
     ).subscribe(result => {
       this.router.navigate([`${result.value}`])
     })
