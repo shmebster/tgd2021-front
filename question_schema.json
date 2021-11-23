@@ -1,0 +1,7 @@
+[{
+  "isAnswered": false,
+  "valid": "valid_answer",
+  "text": "текст вопроса",
+  "answers": ["ответ1", "ответ2", "valid_answer","четвыертый вариант"]
+}
+]

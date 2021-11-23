@@ -2,6 +2,7 @@
 
 .cards-history {
   position: fixed;
+  z-index: 20000;
   width: 100%;
   bottom: 0px;
   max-height: 70px;

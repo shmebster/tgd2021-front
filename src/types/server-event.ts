@@ -32,6 +32,7 @@ export interface EventCardsChanged {
 export interface EventCardPlayed {
   telegramId: number;
   card: string;
+  name: string;
 }
 
 export interface EventScoreChanged {
