@@ -46,3 +46,14 @@ figure {
   height: 32px;
   width: 32px;
 }
+
+.big {
+  font-size: 7em;
+  color: $thg_green;
+
+  transition-delay: 2s;
+}
+
+.title {
+  transition: font-size 2s;
+}

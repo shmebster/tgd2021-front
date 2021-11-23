@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from "../../../services/api.service";
 import { AppState } from "../../../../types/app-state";
+import { EventService } from "../../../services/event.service";
+import { merge } from "rxjs";
 
 class GamePage {
   title: string;
@@ -15,6 +17,7 @@ class GamePage {
 export class MainActionsComponent implements OnInit {
   state: AppState;
   loading: Boolean;
+  quizState: 'running' | 'paused';
 
   pages: GamePage[] = [
     { title: 'Welcome', name: 'welcome' },
@@ -23,7 +26,7 @@ export class MainActionsComponent implements OnInit {
     { title: 'Start quiz', name: 'quiz' }
   ];
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private eventService: EventService) { }
 
   private updateState() {
     this.loading = true;
@@ -31,10 +34,20 @@ export class MainActionsComponent implements OnInit {
       this.state = r;
       this.loading = false;
     })
+    this.apiService.getGameState().subscribe(r => {
+      console.log(r);
+      this.quizState = r.value;
+    })
   }
 
   ngOnInit(): void {
     this.updateState();
+    merge(
+        this.eventService.gameResumed,
+        this.eventService.gamePaused,
+    ).subscribe(e => {
+      this.updateState();
+    })
   }
 
   isActive(state: string) {
@@ -48,5 +61,17 @@ export class MainActionsComponent implements OnInit {
     this.apiService.setAppState('main', state).subscribe(() => {
       this.updateState();
     });
+  }
+
+  pauseGame() {
+    this.apiService.pauseGame().subscribe(() => {
+      console.log(`game paused`);
+    });
+  }
+
+  resumeGame() {
+    this.apiService.resumeGame().subscribe(() => {
+      console.log(`game resumed`);
+    })
   }
 }

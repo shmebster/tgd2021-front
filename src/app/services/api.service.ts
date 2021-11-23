@@ -6,6 +6,8 @@ import { AppState } from "../../types/app-state";
 import { Participant } from "../../types/participant";
 import { Question } from "../../types/question";
 import { CardItem } from "../../types/card-item";
+import { GameState } from "./gameState";
+import { PenaltyDto } from "../../types/penalty.dto";
 
 @Injectable({
   providedIn: 'root'
@@ -40,4 +42,41 @@ export class ApiService {
     getCards(telegramId: number): Observable<CardItem[]> {
         return this.httpClient.get<CardItem[]>(`${API_URL}/cards/${telegramId}`);
     }
+
+  continueGame() {
+    console.log(`continue game`);
+    return this.httpClient.post(`${API_URL}/quiz/proceed`, {});
+  }
+
+  markQueueAsCompleted(_id: string) {
+    return this.httpClient.post(`${API_URL}/game/${_id}/complete`, {});
+  }
+
+    pauseGame() {
+        return this.httpClient.post(`${API_URL}/game/pause`, {});
+    }
+
+    resumeGame() {
+      return this.httpClient.post(`${API_URL}/game/resume`, {});
+    }
+
+  getGameState() {
+    return this.httpClient.get<GameState>(`${API_URL}/game/state`);
+  }
+
+  getPenalty() {
+    console.log(`get penalty`);
+    return this.httpClient.get<PenaltyDto>(`${API_URL}/penalty`);
+  }
+
+    getAdditionalQuestion(target: number) {
+        return this.httpClient.post<Question>(`${API_URL}/quiz/extraquestion`, {
+          telegramId: target,
+        });
+    }
+
+  getImageUrl(id: number) {
+    const timestamp = new Date().getTime();
+    return `${API_URL}/guests/photo/${id}?$t=${timestamp}}`;
+  }
 }

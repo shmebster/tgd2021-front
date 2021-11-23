@@ -6,6 +6,7 @@ import { EventStateChanged, ServerEvent } from "../types/server-event";
 import { ApiService } from "./services/api.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { filter, map } from "rxjs/operators";
+import { ToastService } from "./toast.service";
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,12 @@ export class AppComponent implements OnInit {
   title = 'thanksgiving';
   connection = io(API_URL);
 
-  constructor(private eventService: EventService, private apiService: ApiService,private router: Router, private routeSnapshot: ActivatedRoute) {
+  constructor(
+      private eventService: EventService,
+      private apiService: ApiService,
+      private router: Router,
+      private toastService: ToastService,
+      private routeSnapshot: ActivatedRoute) {
   }
 
 
@@ -34,5 +40,8 @@ export class AppComponent implements OnInit {
     ).subscribe(result => {
       this.router.navigate([`${result.value}`])
     })
+    this.eventService.notificationEvent.subscribe((event) => {
+      this.toastService.showToast(event.data.text, event.data.timeout);
+    });
   }
 }

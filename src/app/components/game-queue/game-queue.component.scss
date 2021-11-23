@@ -1,0 +1,41 @@
+@import "../../../styles.scss";
+
+
+@keyframes wrong-answer {
+  from { background-color: inherit}
+  to { background-color: $thg_red }
+}
+
+@keyframes valid-answer {
+  from { background-color: inherit }
+  to { background-color: $thg_orange }
+}
+
+
+.queue-container {
+  width: 100%;
+  background-color: $thg_orange;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.queue-info {
+  flex-direction: column;
+  height: 100vh;
+}
+
+h1,h3  {
+  text-align: center;
+}
+
+.penalty {
+  color: white;
+  animation: wrong-answer 3s 1;
+  background-color: $thg_red;
+}
+
+.prize {
+  animation: valid-answer 3s 1;
+  background-color: $thg_orange;
+}

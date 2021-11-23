@@ -1,5 +1,11 @@
 import { Question } from "./question";
 
+export enum QueueTypes {
+  additionalQuestion = 'additional_question',
+  giveOutAPrize = 'give_out_a_prize',
+  penalty = 'penalty',
+}
+
 export interface EventPhotosUpdated {
   id: number;
 }
@@ -28,6 +34,28 @@ export interface EventCardPlayed {
   card: string;
 }
 
+export interface EventScoreChanged {
+  telegramId: number;
+  newScore: number;
+}
+
+export interface EventGameQueue {
+  target: number;
+  completed: boolean;
+  type: QueueTypes;
+  _id: string;
+}
+
+export interface EventQueueCompleted {
+
+}
+
+export class EventNotification {
+  text: string;
+  timeout: number;
+}
+
+
 export interface QuestionChangedEvent extends Question {};
 
 export interface ServerEvent<T> {
@@ -39,5 +67,11 @@ export interface ServerEvent<T> {
       | 'cards_changed'
       | 'card_played'
       | 'wrong_answer_received'
+      | 'score_changed'
+      | 'game_queue'
+      | 'queue_completed'
+      | 'game_paused'
+      | 'game_resumed'
+      | 'notification'
   data: T
 }

@@ -1,5 +1,9 @@
+<app-game-pause *ngIf="gamePaused"></app-game-pause>
 <app-answer-notification></app-answer-notification>
+
 <app-card-played></app-card-played>
 <app-participants>
 </app-participants>
-<app-question></app-question>
+<app-question *ngIf="showQuestion"></app-question>
+<app-game-queue *ngIf="showGameQueue" [action]="gameQueueAction"></app-game-queue>
+<app-cards-history></app-cards-history>

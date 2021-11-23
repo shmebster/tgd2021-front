@@ -2,8 +2,13 @@ import { Injectable, EventEmitter } from '@angular/core';
 import {
   EventAnswerReceived,
   EventCardPlayed,
-  EventCardsChanged,
-  EventPhotosUpdated, EventStateChanged, EventUserAdded, EventWrongAnswerReceived, QuestionChangedEvent,
+  EventCardsChanged, EventGameQueue, EventNotification,
+  EventPhotosUpdated, EventQueueCompleted,
+  EventScoreChanged,
+  EventStateChanged,
+  EventUserAdded,
+  EventWrongAnswerReceived,
+  QuestionChangedEvent,
   ServerEvent
 } from "../../types/server-event";
 
@@ -19,10 +24,16 @@ export class EventService {
   public stateChangedEvent = new EventEmitter<ServerEvent<EventStateChanged>>();
   public userAddedEvent = new EventEmitter<ServerEvent<EventUserAdded>>();
   public wrongAnswerEvent = new EventEmitter<ServerEvent<EventWrongAnswerReceived>>();
+  public scoreChangedEvent = new EventEmitter<ServerEvent<EventScoreChanged>>();
+  public gameQueueEvent = new EventEmitter<ServerEvent<EventGameQueue>>()
+  public queueCompleted = new EventEmitter<ServerEvent<EventQueueCompleted>>();
+  public gamePaused = new EventEmitter<ServerEvent<void>>();
+  public gameResumed = new EventEmitter<ServerEvent<void>>();
+  public notificationEvent = new EventEmitter<ServerEvent<EventNotification>>();
   constructor() { }
 
   public emit(event: ServerEvent<any>) {
-    console.log(`event`, event);
+    console.log(`event: ${JSON.stringify(event)}`);
     switch (event.event) {
       case "answer_received":
         this.answerReceivedEvent.emit(event as ServerEvent<EventAnswerReceived>);
@@ -47,6 +58,24 @@ export class EventService {
         break;
       case "wrong_answer_received":
         this.wrongAnswerEvent.emit(event as ServerEvent<EventWrongAnswerReceived>);
+        break;
+      case "score_changed":
+        this.scoreChangedEvent.emit(event as ServerEvent<EventScoreChanged>);
+        break;
+      case "game_queue":
+        this.gameQueueEvent.emit(event as ServerEvent<EventGameQueue>);
+        break;
+      case "queue_completed":
+        this.queueCompleted.emit(event as ServerEvent<EventQueueCompleted>);
+        break;
+      case "game_paused":
+        this.gamePaused.emit(event);
+        break;
+      case "game_resumed":
+        this.gameResumed.emit(event);
+        break;
+      case "notification":
+        this.notificationEvent.emit(event as ServerEvent<EventNotification>);
         break;
     }
   }

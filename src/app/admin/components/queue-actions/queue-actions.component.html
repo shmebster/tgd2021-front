@@ -1,0 +1,5 @@
+<div *ngIf="gameQueue">
+    <div>ID: {{ gameQueue._id }}</div>
+    <div>tg: {{ gameQueue.type }}</div>
+    <button class="btn btn-dark" (click)="markAsCompleted(gameQueue._id)">complete</button>
+</div>

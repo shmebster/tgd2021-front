@@ -22,7 +22,15 @@ export class ParticipantsComponent implements OnInit, OnDestroy {
         takeUntil(this.destroyed$),
         map(e => e.data),
     ).subscribe(e => this.updateParticipants());
-
+    this.eventService.scoreChangedEvent.pipe(
+        takeUntil(this.destroyed$),
+        map(e => e.data),
+    ).subscribe(data => {
+      const player = this.participants.find(x => x.telegramId === data.telegramId);
+      if (player) {
+        player.score = data.newScore
+      }
+    })
     this.updateParticipants();
   }
 

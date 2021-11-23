@@ -15,6 +15,15 @@ import { RegisterComponent } from './views/register/register.component';
 import { AnswerNotificationComponent } from './components/answer-notification/answer-notification.component';
 import { OnboardingComponent } from './views/onboarding/onboarding.component';
 import { CardPlayedComponent } from './components/card-played/card-played.component';
+import { GameQueueComponent } from './components/game-queue/game-queue.component';
+import { GamePauseComponent } from './components/game-pause/game-pause.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastComponent } from './components/toast/toast.component';
+import { EventService } from "./services/event.service";
+import { ApiService } from "./services/api.service";
+import { CountdownComponent } from './components/countdown/countdown.component';
+import { CardsHistoryComponent } from './components/cards-history/cards-history.component';
+import { AvatarComponent } from './components/avatar/avatar.component';
 
 @NgModule({
   declarations: [
@@ -29,14 +38,21 @@ import { CardPlayedComponent } from './components/card-played/card-played.compon
     AnswerNotificationComponent,
     OnboardingComponent,
     CardPlayedComponent,
+    GameQueueComponent,
+    GamePauseComponent,
+    ToastComponent,
+    CountdownComponent,
+    CardsHistoryComponent,
+    AvatarComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    NgbModule,
   ],
-  providers: [],
+  providers: [EventService, ApiService],
   exports: [
   ],
   bootstrap: [AppComponent]

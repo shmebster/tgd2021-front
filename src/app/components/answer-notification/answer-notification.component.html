@@ -6,8 +6,10 @@
             <div class="d-flex align-items-center justify-content-center">
                 <app-participant-item *ngIf="participant" [participant]="participant"></app-participant-item>
             </div>
-            <h2 class="text-center">выйграл наказание</h2>
-            <h1>{{ countdown }}</h1>
+            <h2 class="text-center" *ngIf="!answerIsValid">выйграл наказание</h2>
+            <audio *ngIf="!answerIsValid" src="assets/sfx/wrong_answer.mp3" autoplay></audio>
+            <audio *ngIf="answerIsValid" src="assets/sfx/valid_answer.mp3" autoplay></audio>
+            <app-countdown *ngIf="showCountdown" [countdown]="countdown" (completed)="countdownCompleted()"></app-countdown>
         </div>
     </div>
 </div>

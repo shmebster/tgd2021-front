@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Participant } from "../../../types/participant";
 import { EventService } from "../../services/event.service";
 import { Observable, Subject, Subscription } from "rxjs";
@@ -13,14 +13,21 @@ import { CardItem } from "../../../types/card-item";
   templateUrl: './participant-item.component.html',
   styleUrls: ['./participant-item.component.scss']
 })
-export class ParticipantItemComponent implements OnInit, OnDestroy {
+export class ParticipantItemComponent implements OnInit, OnDestroy, OnChanges {
   @Input() participant: Participant;
   @Input() small = false;
   cards: CardItem[] = [];
   private destroyed$ = new Subject<void>();
   imgTimestamp = (new Date()).getTime();
+  addAnimatedClass = false;
+
   constructor(private eventService: EventService, private apiService: ApiService) {
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.addAnimatedClass = true;
+    setInterval(() => this.addAnimatedClass = false, 2000);
+    }
 
   ngOnInit(): void {
     this.eventService.photosUpdatedEvent.pipe(
@@ -47,6 +54,7 @@ export class ParticipantItemComponent implements OnInit, OnDestroy {
     this.getCards();
   }
   ngOnDestroy() {
+    this.destroyed$.next();
     this.destroyed$.complete();
   }
 

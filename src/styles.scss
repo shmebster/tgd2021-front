@@ -12,5 +12,8 @@ $yellow_gradient: linear-gradient(0deg, rgba(255,166,1,1) 0%, rgba(248,177,44,1)
 
 body {
   background-color: rgba($thg_brown, 0.4) !important;
-
+  overflow: hidden;
 }
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

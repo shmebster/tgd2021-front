@@ -7,7 +7,8 @@
   </div>
   <div class="content" *ngIf="!small">
     <div class="card-subtitle">
-      <h3>{{ participant.score || 'нУль очКов' }}</h3>
+
+      <h3 class="animate__zoomInDown animate__animated title" [ngClass]="{'animate__zoomInDown animate__animated big': addAnimatedClass }">{{ participant.score || 0 }}</h3>
     </div>
     <div class="card-text">
       <img *ngFor="let card of cards" [src]="'/assets/cards/' + card.cardType + '.png'" class="card-icon">

@@ -1,8 +1,8 @@
 <div class="container">
-  <section>
+  <section *ngIf="question">
     <div class="question-container">
       <h1 class="question-number mt-4">
-        Вопрос номер
+        Вопрос
       </h1>
       <h1 class="question-text mt-4">
         {{ question.text }}

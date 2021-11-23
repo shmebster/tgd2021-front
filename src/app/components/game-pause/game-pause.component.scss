@@ -1,0 +1,64 @@
+@import "../../../styles.scss";
+
+@keyframes blinking {
+  from { opacity: 1 }
+  50% { opacity: 0 }
+  to { opacity: 1 }
+}
+
+
+@keyframes coloring {
+  from { background-color: $thg_brown }
+  50% { background-color: $thg_yellow }
+  to { background-color: $thg_brown }
+}
+
+.pause-container {
+  position: absolute;
+  z-index: 10000;
+  background-color: $thg_green;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-image: url('/assets/turkey1.png');
+  background-size: auto;
+  background-repeat: no-repeat;
+  div {
+    width: 400px;
+  }
+}
+
+.paused-subtext {
+  animation: blinking 2s infinite;
+}
+
+.meme {
+  max-width: 600px;
+  z-index: 1000;
+}
+
+h1, h4 {
+  text-align: center;
+}
+
+.turkey {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 500;
+}
+
+.pause-message {
+  background-color: $thg_brown;
+  padding: 20px;
+  position: absolute;
+  right: 0px;
+  border-bottom-left-radius: 20px;
+  top: 0px;
+  animation: coloring 13s infinite;
+  border-bottom: 1px solid $thg_black;
+  border-left:  1px solid $thg_black;
+}

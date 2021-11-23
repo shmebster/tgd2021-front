@@ -1,0 +1,4 @@
+<h1 [ngClass]="{'counter-out': countdown < 4 }" class="text-center animate__backInDown animate__animated">{{ countdown }}
+</h1>
+
+<audio *ngIf="countdown < 5" src="assets/sfx/countdown.mp3" autoplay></audio>

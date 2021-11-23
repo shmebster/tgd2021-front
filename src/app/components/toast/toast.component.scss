@@ -1,0 +1,21 @@
+@import "../../../styles.scss";
+
+.toast-notification {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10000;
+  padding: 15px;
+  color: white;
+  background-color: $thg-brown;
+  font-size: 4em;
+  border-radius: 10px;
+  border: 1px solid $thg_green;
+  min-width: 40%;
+
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}

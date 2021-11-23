@@ -1,0 +1,14 @@
+@import "../../../styles.scss";
+
+.counter-out {
+  transition: color 2s;
+  transition: font-size 2s;
+  animation: glow 3s infinite alternate;
+  font-size: 5em;
+  color: $thg_red;
+  text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+}
+
+h1 {
+  text-align: center;
+}

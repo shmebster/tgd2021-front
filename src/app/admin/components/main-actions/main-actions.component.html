@@ -1,9 +1,27 @@
-<div class="btn-group" *ngIf="state">
-    <div>
-        <button class="btn btn-warning" *ngFor="let page of pages"
-                [ngClass]="{ 'active': isActive(page.name) }" (click)="setState(page.name)"
-        > {{ page.title }}</button>
+<div class="row row-cols-1 m-1">
+    <div class="col">
+        <div class="btn-group" *ngIf="state">
+            <div>
+                <button class="btn btn-warning" *ngFor="let page of pages"
+                        [ngClass]="{ 'active': isActive(page.name) }" (click)="setState(page.name)"
+                > {{ page.title }}</button>
 
-        <app-spinner *ngIf="loading"></app-spinner>
+                <app-spinner *ngIf="loading"></app-spinner>
+            </div>
+        </div>
     </div>
 </div>
+Pause menu
+<div class="row row-cols-1 m-1">
+    <div class="col">
+        <div class="btn-group">
+            <button class="btn btn-warning" [disabled]="quizState === 'paused'" (click)="pauseGame()">
+                Pause
+            </button>
+            <button class="btn btn-warning" [disabled]="quizState === 'running'" (click)="resumeGame()">
+                Resume
+            </button>
+        </div>
+    </div>
+</div>
+

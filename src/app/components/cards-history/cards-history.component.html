@@ -1,0 +1,6 @@
+<div class="cards-history d-flex flex-row">
+    <div *ngFor="let item of cardsHistory.reverse().slice(0, 12)" class="card-item animate__animated animate__bounceInDown">
+        <app-avatar [id]="item.telegramId"></app-avatar>
+        <img  [src]="'/assets/cards/' + item.card + '.png'" class="card-icon">
+    </div>
+</div>
