@@ -1,3 +1,4 @@
 <div *ngIf="toastService.isShown" class="toast-notification">
     <p>{{ toastService.text }}</p>
+    <audio [src]="getAudioSrc(toastService.text)"></audio>
 </div>

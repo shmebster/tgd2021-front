@@ -8,6 +8,7 @@ import { Question } from "../../types/question";
 import { CardItem } from "../../types/card-item";
 import { GameState } from "./gameState";
 import { PenaltyDto } from "../../types/penalty.dto";
+import { PrizeDto } from "../../types/prize.dto";
 
 @Injectable({
   providedIn: 'root'
@@ -78,5 +79,9 @@ export class ApiService {
   getImageUrl(id: number) {
     const timestamp = new Date().getTime();
     return `${API_URL}/guests/photo/${id}?$t=${timestamp}}`;
+  }
+
+  getPrize(): Observable<PrizeDto> {
+    return this.httpClient.get<PrizeDto>(`${API_URL}/gifts`);
   }
 }

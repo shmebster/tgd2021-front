@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VoiceService } from "../../services/voice.service";
 
 @Component({
   selector: 'app-onboarding',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OnboardingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private voiceService: VoiceService) { }
 
   ngOnInit(): void {
   }

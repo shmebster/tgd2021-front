@@ -4,6 +4,8 @@ import { Subject } from "rxjs";
 import { map, takeUntil } from "rxjs/operators";
 import { EventGameQueue, QueueTypes } from "../../../types/server-event";
 import { ApiService } from "../../services/api.service";
+import { VoiceService } from "../../services/voice.service";
+import { getAudioPath } from "../../helper/tts.helper";
 
 @Component({
   selector: 'app-quiz',
@@ -21,7 +23,7 @@ export class QuizComponent implements OnInit, OnDestroy {
     type: QueueTypes.giveOutAPrize,
   }
   gamePaused = false;
-  constructor(private eventService: EventService, private apiService: ApiService) { }
+  constructor(private eventService: EventService, private apiService: ApiService, private voiceService: VoiceService) { }
 
   ngOnInit(): void {
     this.eventService.gameQueueEvent.pipe(
@@ -33,7 +35,10 @@ export class QuizComponent implements OnInit, OnDestroy {
       this.showGameQueue = true;
     })
     this.eventService.gamePaused.pipe(takeUntil(this.destroyed$)).subscribe(e => this.gamePaused = true);
-    this.eventService.gameResumed.pipe(takeUntil(this.destroyed$)).subscribe(e => this.gamePaused = false);
+    this.eventService.gameResumed.pipe(takeUntil(this.destroyed$)).subscribe(e => {
+      this.voiceService.playAudio(getAudioPath('поехали дальше'));
+      this.gamePaused = false
+    } );
 
     this.eventService.queueCompleted.pipe(
         takeUntil(this.destroyed$),

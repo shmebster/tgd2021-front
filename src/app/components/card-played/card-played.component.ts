@@ -5,6 +5,8 @@ import { EventCardPlayed } from "../../../types/server-event";
 import { ApiService } from "../../services/api.service";
 import { animate, style, transition, trigger } from "@angular/animations";
 import { API_URL } from "../../../app.constants";
+import { getAudioPath } from "../../helper/tts.helper";
+import { VoiceService } from "../../services/voice.service";
 
 @Component({
   selector: 'app-card-played',
@@ -39,8 +41,8 @@ export class CardPlayedComponent implements OnInit {
   playerName: string;
   card: string;
   participantId: number;
-    private imgTimestamp: number;
-  constructor(private eventService: EventService, private apiService: ApiService) { }
+  private imgTimestamp: number;
+  constructor(private eventService: EventService, private apiService: ApiService, private voiceService: VoiceService) { }
 
   ngOnInit(): void {
     this.eventService.cardPlayedEvent.pipe(map((x => x.data))).subscribe(e => {
@@ -51,12 +53,17 @@ export class CardPlayedComponent implements OnInit {
         this.playerName = d.name
         this.isShown = true;
         this.imgTimestamp = (new Date()).getTime();
+        this.voiceService.playAudio(this.voiceService.getAudioUrl(`${this.playerName} сыграл ${this.card}`));
         setTimeout(() => this.isShown = false, 6000);
       });
     })
   }
   getImageUrl() {
     return `${API_URL}/guests/photo/${this.participantId}?$t=${this.imgTimestamp}`;
+  }
+
+  getAudioSrc(text: string) {
+      return getAudioPath(text);
   }
 
 }

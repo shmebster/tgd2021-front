@@ -16,6 +16,7 @@ export interface EventStateChanged {
 }
 export interface EventAnswerReceived {
   telegramId: number;
+  validAnswer: string;
 }
 
 export interface EventWrongAnswerReceived extends EventAnswerReceived {}

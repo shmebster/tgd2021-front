@@ -5,6 +5,8 @@ import { Subject, Subscription } from "rxjs";
 import { Question } from "../../../types/question";
 import { EventService } from "../../services/event.service";
 import { QuestionChangedEvent } from "../../../types/server-event";
+import { VoiceService } from "../../services/voice.service";
+import { API_URL } from "../../../app.constants";
 
 @Component({
   selector: 'app-question',
@@ -17,12 +19,13 @@ export class QuestionComponent implements OnInit, OnDestroy  {
   private questionSubscription: Subscription;
 
 
-  constructor(private apiService:ApiService, private eventService: EventService) { }
+  constructor(private apiService:ApiService, private eventService: EventService, private voiceService: VoiceService) { }
   ngOnInit(): void {
     if(this.question) {
+      this.voiceService.playAudio(this.voiceService.getAudioUrl(this.question.text));
       return;
     }
-    this.getQuestion();
+    setTimeout(() => this.getQuestion(), 3000);
     this.questionSubscription = this.eventService.questionChangedEvent.subscribe(() =>{
       this.getQuestion();
     });
@@ -33,12 +36,15 @@ export class QuestionComponent implements OnInit, OnDestroy  {
     this.apiService.getQuestion().pipe(
         takeUntil(this.destroyed$)
     ).subscribe(r => {
+      if (this.question && this.question.text === r.text) {
+        return;
+      }
       this.question = r;
+      this.voiceService.playAudio(this.voiceService.getAudioUrl(r.text));
     });
   }
 
   ngOnDestroy() {
-    console.log(`subs detroyed`);
     if (this.questionSubscription) {
       this.questionSubscription.unsubscribe();
     }

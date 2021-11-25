@@ -7,16 +7,21 @@
             <div class="col-8">
                 <div *ngIf="action.type === gameQueueTypes.giveOutAPrize">
                     <h1 class="animate__flip animate__animated">Ура, приз!</h1>
-                    <h3 class="animate__animated animate__backInUp">какой именно приз</h3>
                     <audio src="assets/sfx/prize.mp3" autoplay></audio>
+                    <div *ngIf="showPrize">
+                        <h3 class="animate__animated animate__backInUp"> {{ prize.name }}</h3>
+                        <audio [src]="prizeAudioSrc" autoplay></audio>
+                    </div>
+                    <app-countdown (completed)="countdownCompleted()" *ngIf="showCountdown" [countdown]="countdown"></app-countdown>
                 </div>
                 <div *ngIf="action.type === gameQueueTypes.penalty">
                     <h1 class="animate__animated animate__flip">Наказание</h1>
                     <h3 class="animate__animated animate__backInUp">{{ penalty }}</h3>
+                    <audio *ngIf="penalty" [src]="getAudio(penalty)" autoplay></audio>
                     <app-countdown (completed)="countdownCompleted()" *ngIf="showCountdown" [countdown]="countdown"></app-countdown>
                 </div>
                 <div *ngIf="action.type === gameQueueTypes.additionalQuestion">
-                    <app-question [question]="question"></app-question>
+                    <app-question *ngIf="showQuestion" [question]="question"></app-question>
                 </div>
 
             </div>

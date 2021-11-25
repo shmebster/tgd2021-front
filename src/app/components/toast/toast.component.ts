@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastService } from "../../toast.service";
+import { getAudioPath } from "../../helper/tts.helper";
 
 @Component({
   selector: 'app-toast',
@@ -13,4 +14,7 @@ export class ToastComponent implements OnInit {
   ngOnInit(): void {
   }
 
+    getAudioSrc(text: string) {
+        return getAudioPath(text);
+    }
 }

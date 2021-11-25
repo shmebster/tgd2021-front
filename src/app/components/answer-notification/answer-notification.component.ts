@@ -5,6 +5,8 @@ import { EventService } from "../../services/event.service";
 import { filter, map, take, takeUntil, tap } from "rxjs/operators";
 import { Participant } from "../../../types/participant";
 import { animate, style, transition, trigger } from "@angular/animations";
+import { getAudioPath, getAudioPathWithTemplate } from "../../helper/tts.helper";
+import { VoiceService } from "../../services/voice.service";
 
 @Component({
     selector: 'app-answer-notification',
@@ -53,17 +55,19 @@ export class AnswerNotificationComponent implements OnInit, OnDestroy {
     timer: Observable<any>;
     countdown = 10;
     showCountdown = false;
+    announceAudio = true;
+    audioSrc: string;
     private destroyed$ = new Subject<void>();
 
-    constructor(private apiService: ApiService, private eventService: EventService) {
+    constructor(private apiService: ApiService, private eventService: EventService, private voiceService: VoiceService) {
         this.eventService.answerReceivedEvent.pipe(
             takeUntil(this.destroyed$),
             map(e => e.data)
-        ).subscribe(d => this.showNotification(d.telegramId, true));
+        ).subscribe(d => this.showNotification(d.telegramId, true, d.validAnswer));
         this.eventService.wrongAnswerEvent.pipe(
             takeUntil(this.destroyed$),
             map(e => e.data)
-        ).subscribe(d => this.showNotification(d.telegramId, false));
+        ).subscribe(d => this.showNotification(d.telegramId, false, d.validAnswer));
         this.eventService.scoreChangedEvent.pipe(
             takeUntil(this.destroyed$),
             map(e => e.data),
@@ -74,12 +78,17 @@ export class AnswerNotificationComponent implements OnInit, OnDestroy {
         });
     }
 
-    showNotification(telegramId: number, validAnswer: boolean) {
+    showNotification(telegramId: number, validAnswer: boolean, validAnswerValue: string) {
         this.countdown = validAnswer ? 10 : 5;
         this.apiService.getParticipant(telegramId).subscribe(p => {
             this.participant = p;
             this.isShown = true;
             this.answerIsValid = validAnswer;
+            const template = validAnswer ? 'announce-valid' : 'announce-invalid';
+            const templateData: { [index: string]: string} = {};
+            templateData['user'] =  p.name;
+            templateData['answer'] = validAnswerValue;
+            this.voiceService.playAudio(getAudioPathWithTemplate(template, '', templateData));
             this.showCountdown = true;
         })
     }
@@ -88,6 +97,7 @@ export class AnswerNotificationComponent implements OnInit, OnDestroy {
         console.log(`countdown-completed`);
         this.showCountdown = false;
         this.isShown = false;
+        this.announceAudio = false;
         this.countdown = 10;
         this.apiService.continueGame().subscribe(r => console.log(r));
     }

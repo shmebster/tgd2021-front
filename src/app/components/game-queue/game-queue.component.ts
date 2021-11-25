@@ -5,6 +5,8 @@ import { ApiService } from "../../services/api.service";
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 import { Question } from "../../../types/question";
+import { getAudioPath } from "../../helper/tts.helper";
+import { PrizeDto } from "../../../types/prize.dto";
 
 @Component({
   selector: 'app-game-queue',
@@ -20,6 +22,11 @@ export class GameQueueComponent implements OnInit {
   countdown: number;
   showCountdown: boolean;
   question: Question = new Question();
+  showQuestion = false;
+  showPrize = false;
+  prize: PrizeDto;
+  countdownCompleted$: Subject<void> = new Subject<void>();
+  prizeAudioSrc: string;
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
@@ -32,7 +39,16 @@ export class GameQueueComponent implements OnInit {
       this.getPenalty();
     }
     if(this.action.type === this.gameQueueTypes.additionalQuestion) {
-      this.getAdditionalQuestion();
+      this.getAdditionalQuestion()
+    }
+
+    if(this.action.type === this.gameQueueTypes.giveOutAPrize) {
+      this.countdown = 10;
+      this.showCountdown = true;
+      this.countdownCompleted$.pipe(takeUntil(this.destroyed$)).subscribe(() => {
+        this.getPrize();
+      });
+
     }
   }
 
@@ -48,11 +64,25 @@ export class GameQueueComponent implements OnInit {
 
   countdownCompleted() {
     this.showCountdown = false;
+    this.countdownCompleted$.next();
   }
 
   private getAdditionalQuestion() {
     this.apiService.getAdditionalQuestion(this.action.target).subscribe(e => {
       this.question = e;
+      this.showQuestion = true;
     })
+  }
+
+    getAudio(penalty: string) {
+        return getAudioPath(penalty);
+    }
+
+  private getPrize() {
+    this.apiService.getPrize().pipe(takeUntil(this.destroyed$)).subscribe((r) => {
+      this.prize = r;
+      this.showPrize = true;
+      this.prizeAudioSrc = getAudioPath(`Поздавляю, ${this.participant.name} получает ${this.prize.name}`);
+    });
   }
 }
