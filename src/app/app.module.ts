@@ -24,6 +24,8 @@ import { ApiService } from "./services/api.service";
 import { CountdownComponent } from './components/countdown/countdown.component';
 import { CardsHistoryComponent } from './components/cards-history/cards-history.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
+import { FinishComponent } from './views/finish/finish.component';
+import { InitialComponent } from './views/initial/initial.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { AvatarComponent } from './components/avatar/avatar.component';
     CountdownComponent,
     CardsHistoryComponent,
     AvatarComponent,
+    FinishComponent,
+    InitialComponent,
   ],
   imports: [
     BrowserModule,

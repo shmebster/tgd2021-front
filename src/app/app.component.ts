@@ -56,4 +56,8 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.destroyed.complete();
   }
+
+  onAudioEnded() {
+    this.voiceService.audioEnded();
+  }
 }

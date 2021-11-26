@@ -20,10 +20,12 @@ export class MainActionsComponent implements OnInit {
   quizState: 'running' | 'paused';
 
   pages: GamePage[] = [
+    { title: 'Initial', name: 'initial' },
     { title: 'Welcome', name: 'welcome' },
     { title: 'Registration', name: 'register'},
     { title: 'Onboarding', name: 'onboarding' },
-    { title: 'Start quiz', name: 'quiz' }
+    { title: 'Start quiz', name: 'quiz' },
+    { title: 'End', name: 'finish' },
   ];
 
   constructor(private apiService: ApiService, private eventService: EventService) { }

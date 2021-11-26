@@ -1,5 +1,5 @@
 <app-toast>
 
 </app-toast>
-<audio *ngIf="audioSrc" [src]="audioSrc" autoplay></audio>
+<audio *ngIf="audioSrc" [src]="audioSrc" autoplay (ended)="onAudioEnded()"></audio>
 <router-outlet></router-outlet>
