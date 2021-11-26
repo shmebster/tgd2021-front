@@ -82,7 +82,7 @@ export class GameQueueComponent implements OnInit {
     this.apiService.getPrize().pipe(takeUntil(this.destroyed$)).subscribe((r) => {
       this.prize = r;
       this.showPrize = true;
-      this.prizeAudioSrc = getAudioPath(`Поздавляю, ${this.participant.name} получает ${this.prize.name}`);
+      this.prizeAudioSrc = getAudioPath(`Поздравляю, ${this.participant.name} получает ${this.prize.name}`);
     });
   }
 }
