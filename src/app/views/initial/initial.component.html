@@ -1,0 +1,8 @@
+
+<div class="video-border">
+  
+</div>
+<div class="container-fluid">
+  <video *ngIf="currentlyPlayingEp" #videoPlayer [src]="currentlyPlayingEp" (ended)="playNext()" autoplay controls></video>
+</div>
+

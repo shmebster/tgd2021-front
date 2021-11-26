@@ -37,8 +37,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   welcomeDict = welcomeDict;
   currentRule = 0;
   currentWelcomeText = 0;
-  private interval: number;
-  private welcomeInterval: number;
+  private interval: ReturnType<typeof setInterval>;
+  private welcomeInterval: ReturnType<typeof setInterval>;
   constructor() { }
 
   ngOnInit(): void {

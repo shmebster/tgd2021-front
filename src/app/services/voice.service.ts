@@ -10,6 +10,7 @@ export class VoiceService {
 
   constructor(private httpClient: HttpClient) { }
   public voiceSubject = new Subject<string>();
+  public audioEndedSubject = new Subject<void>();
 
   playAudio(url: string) {
     console.log(`play audio ${url}`);
@@ -22,5 +23,9 @@ export class VoiceService {
 
   getAudioUrlSSML(text: string) {
     return `${API_URL}/voice/ssml?text=${encodeURI(text)}`
+  }
+
+  audioEnded() {
+    this.audioEndedSubject.next();
   }
 }

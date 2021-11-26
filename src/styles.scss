@@ -15,5 +15,16 @@ body {
   overflow: hidden;
 }
 
+.bg-olive {
+  background-color: $thg_green !important;
+}
+.bg-red {
+  background-color: $thg_red !important;
+}
+
+.bg-yellow {
+  background-color: $thg_yellow !important;
+}
+
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
