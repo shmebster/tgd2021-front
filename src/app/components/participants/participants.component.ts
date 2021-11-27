@@ -13,6 +13,8 @@ import { EventUserAdded } from "../../../types/server-event";
 })
 export class ParticipantsComponent implements OnInit, OnDestroy {
   @Input() small = false;
+  @Input() sorted = false;
+  @Input() showScoreOnSmall = false;
   participants: Participant[] = [];
   destroyed$ = new Subject<void>();
   constructor(private apiService: ApiService, private eventService: EventService) { }
@@ -36,7 +38,22 @@ export class ParticipantsComponent implements OnInit, OnDestroy {
 
   updateParticipants() {
     this.apiService.getParticipants().subscribe((r) => {
-      this.participants = r;
+      if (!this.sorted) {
+        this.participants = r;
+      } else {
+        this.participants = r.sort((a,b) => {
+          if (a.score === undefined || b.score === undefined) {
+            return 0;
+          }
+          if (a.score < b.score) {
+            return -1;
+          }
+          if (a.score > b.score) {
+            return 1;
+          }
+          return 0;
+        }).reverse();
+      }
     });
   }
 

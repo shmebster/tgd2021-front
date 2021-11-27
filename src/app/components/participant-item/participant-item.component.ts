@@ -16,6 +16,7 @@ import { CardItem } from "../../../types/card-item";
 export class ParticipantItemComponent implements OnInit, OnDestroy, OnChanges {
   @Input() participant: Participant;
   @Input() small = false;
+  @Input() showScoreOnSmall = false;
   cards: CardItem[] = [];
   private destroyed$ = new Subject<void>();
   imgTimestamp = (new Date()).getTime();

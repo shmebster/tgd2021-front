@@ -1,1 +1,20 @@
-<p>finish works!</p>
+<div *ngIf="step === 1" [@enterAnimation]>
+  <div class="video-container">
+    <video src="../../../assets/game-completed.mp4" autoplay (ended)="gameCompletedVideoEnded()"></video>"
+  </div>
+</div>
+<div *ngIf="step === 2" class="step-1">
+  <audio src="../../../assets/sfx/gameend.mp3" autoplay (ended)="congratulate()"></audio>
+<div class="container-fluid">
+  <h1>Поздравляем, вы прошли игру!</h1>
+</div>
+<app-participants [sorted]="true" [small]="true" [showScoreOnSmall]="true"></app-participants>
+<div class="d-flex justify-content-center">
+  <div class="animate__animated animate__zoomInUp"><img src="../../../assets/win.png" [@enterAnimation] align="center" width="500"></div>
+</div>
+</div>
+<div *ngIf="step === 3" [@enterAnimation]>
+  <div class="video-container">
+    <video src="../../../assets/captions.mp4" autoplay></video>
+  </div>
+</div>

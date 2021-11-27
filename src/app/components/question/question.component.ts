@@ -1,12 +1,10 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ApiService } from "../../services/api.service";
-import { filter, map, takeUntil } from "rxjs/operators";
+import { takeUntil } from "rxjs/operators";
 import { Subject, Subscription } from "rxjs";
 import { Question } from "../../../types/question";
 import { EventService } from "../../services/event.service";
-import { QuestionChangedEvent } from "../../../types/server-event";
 import { VoiceService } from "../../services/voice.service";
-import { API_URL } from "../../../app.constants";
 
 @Component({
   selector: 'app-question',
