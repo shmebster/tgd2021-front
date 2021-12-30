@@ -8,22 +8,43 @@ $thg_black: #382615;
 $thg_brown: #996236;
 $thg_green: #858D3C;
 
-$yellow_gradient: linear-gradient(0deg, rgba(255,166,1,1) 0%, rgba(248,177,44,1) 49%, rgba(255,211,129,1) 100%);
+$christmas_dark: #0f160f;
+$christmas_dark_green: #152913;
+$christmas_light_green: #243a29;
+$christmas_olive: #5b7e6e;
+$christmas_blue: #225E6F;
+$christmas_red: #790C01;
+$christmas_white: white;
 
+$bg_color: $christmas_dark_green;
+$bg_secondary: $christmas_olive;
+$bg_primary: $christmas_dark;
+$bg_primary_text: #FFFFFF;
+$bg_red: $christmas_red;
+$primary_text_color: $christmas_dark;
+
+
+$yellow_gradient: linear-gradient(0deg, rgba(255,166,1,1) 0%, rgba(248,177,44,1) 49%, rgba(255,211,129,1) 100%);
+$red_gradient: linear-gradient(0deg, rgba(121,12,1,1) 0%, rgba(121,1,2,1) 49%, rgba(100,1,2,1) 100%);
+
+
+$gradient_text_color: $christmas_white;
+$gradient_color: $red_gradient;
+$question_bg_color: $christmas_blue;
 body {
-  background-color: rgba($thg_brown, 0.4) !important;
+  background-color: rgba($bg_color, 0.7) !important;
   overflow: hidden;
 }
 
 .bg-olive {
-  background-color: $thg_green !important;
+  background-color: $bg_secondary !important;
 }
 .bg-red {
-  background-color: $thg_red !important;
+  background-color: $bg_red !important;
 }
 
 .bg-yellow {
-  background-color: $thg_yellow !important;
+  background-color: $bg_red !important;
 }
 
 /* Importing Bootstrap SCSS file. */
