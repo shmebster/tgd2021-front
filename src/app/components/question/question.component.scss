@@ -14,22 +14,28 @@ section {
     h1 {
       text-align: center;
     }
+    .question-text-container {
+      background: $gradient_color;
+      color: $gradient_text_color;
+      border-radius: 23px;
+      padding: 25px;
+    }
     .question-text {
       font-family: 'Inter', sans-serif;
     }
     .question-number {
       font-size: 2.9em;
-      color: rgba($thg_brown,0.8);
+      color: rgba($primary_text_color,0.8);
     }
     .answer {
       margin: 15px;
-      background: $yellow_gradient;
+      background: $gradient_color;
       font-size: 1.5em;
-      padding: 10px;
-      padding-top: 20px;
+      padding: 20px 10px 10px;
       border-radius: 23px;
       p {
         text-align: center;
+        color: $gradient_text_color;
       }
     }
   }
